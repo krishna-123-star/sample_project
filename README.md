@@ -1,17 +1,20 @@
-# sample_project
+**Blog App (Node.js)**
+This is the backend API for a simple blog application built using Express.js
 
-Create an API backend that supports
-User signup
-User login
-View logged-in user details
-Create posts on behalf of logged in user
-List / delete posts 
-View a post
+**Features**
+1. User authentication.
+2. Create, view posts.
 
+Library Installed
+The following Node.js modules are used in this project:
 
-Oru blog nte back end api creation project aanu
-Admin and user  will be there
-Admin can view all posts
-He can delete a post
-User can delete only his posts
-Can comment on another one's post
+**express**  - A web framework for Node.js.
+**express-validator**  - Middleware for request validation in Express.js.
+**mysql2**  - A MySQL database driver for Node.js.
+**sequelize**  - An ORM for Node.js, which supports multiple database systems.
+**body-parser**  - Middleware to parse HTTP request bodies.
+**cors**  - Middleware to enable Cross-Origin Resource Sharing.
+**dotenv**  - Loads environment variables from a .env file.
+**bcrypt**  - A library for hashing and salting passwords.
+**jsonwebtoken**  - Library for creating and verifying JSON Web Tokens (JWTs).
+**winston**  - A flexible and customizable logging library for Node.js.
