@@ -27,3 +27,8 @@ The following Node.js modules are used in this project:
 **jsonwebtoken**  - Library for creating and verifying JSON Web Tokens (JWTs).
 
 **winston**  - A flexible and customizable logging library for Node.js.
+
+
+**Run commands**
+
+npm run startdev
