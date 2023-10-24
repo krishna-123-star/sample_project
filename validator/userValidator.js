@@ -8,6 +8,14 @@ const userValidationRules = () => {
   ]
 }
 
+const postValidationRules = () => {
+  
+  return [
+   body("title").notEmpty().withMessage('Title is required'),
+   body("content").notEmpty().withMessage('Content is required'),
+  ]
+}
+
 const validate = (req, res, next) => {
   
   const errors = validationResult(req)
@@ -24,6 +32,7 @@ const validate = (req, res, next) => {
 
 module.exports = {
   userValidationRules,
+  postValidationRules,
   validate,
 }
 

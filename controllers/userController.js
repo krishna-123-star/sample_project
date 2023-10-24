@@ -1,4 +1,5 @@
 const db = require('../config/db');
+const logger = require('../logger/logger');
 
 // Import User and Role models
 const User = db.User;
@@ -15,6 +16,7 @@ async function getUserDetails(req, res) {
     attributes: { exclude: ['password'] } 
   }).then(user => {
     if (!user) {
+      logger.error('User not found')
       return res.status(404).json({ msg: 'User not found' });
     }
     Role.findByPk(user.roleId).then(roles => {
@@ -25,6 +27,7 @@ async function getUserDetails(req, res) {
       });
     });  
   }).catch(error => {
+    logger.error('Error ', error.message)
     res.status(500).send({message: error.message});
   });
   }
