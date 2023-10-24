@@ -3,6 +3,7 @@ const db = require('../config/db');
 const config = require('../config/config');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const logger = require('../logger/logger.js');
 
 // User and Role models 
 const User = db.User;

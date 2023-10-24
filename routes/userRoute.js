@@ -3,6 +3,7 @@ const { verifyToken } = require('../middlewares/authJWT');
 const { getUserDetails } = require('../controllers/userController');
 const userRouter = express.Router();
 
+//Add Header
 userRouter.use(function(req, res, next) {
     res.header(
       "Access-Control-Allow-Headers",

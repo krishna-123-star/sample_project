@@ -1,21 +1,9 @@
 // Import required modules
 const config = require('./config');
-const mysql = require('mysql2');
 const Sequelize = require('sequelize');
 
 //database configuration parameters
 const { dbhost, dbport, dbuser, dbpassword,database,dbdialect } = config.database;
-
-//Create a MySQL connection pool
-const pool = mysql.createPool({
-    host: dbhost,
-    port: dbport,
-    user: dbuser,
-    password: dbpassword,
-})
-
-//Create Database
-pool.query(`CREATE DATABASE IF NOT EXISTS \`${database}\`;`);
 
 //Initialize the 'db' object
 const db = {};
@@ -37,10 +25,11 @@ db.User = require('../model/user')(sequelize, Sequelize);
 db.Post = require('../model/post')(sequelize, Sequelize);
 db.Role = require('../model/role')(sequelize, Sequelize);
 
-db.Role.hasMany(db.User);
-db.User.belongsTo(db.Role);
-db.User.hasMany(db.Post);
-db.Post.belongsTo(db.User);
+// relationships between models
+db.Role.hasMany(db.User);   //A Role can have multiple Users
+db.User.belongsTo(db.Role); // A User belongs to one Role
+db.User.hasMany(db.Post); // A User can have multiple Posts
+db.Post.belongsTo(db.User); // A Post belongs to one User
 
 sequelize.sync();
 
