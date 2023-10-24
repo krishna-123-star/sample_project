@@ -1,7 +1,7 @@
 //Imports
 const express = require('express');
 const { verifyToken } = require('../middlewares/authJWT');
-const { postValidationRules, validate } = require('../validator/postValidator')
+const { postValidationRules, validate } = require('../validator/userValidator')
 const { createPost, getPosts, getAllPostsUsers, deletePostById, getPostById } = require('../controllers/postController');
 const postRouter = express.Router();
 
@@ -14,20 +14,22 @@ postRouter.use(function(req, res, next) {
     next();
 });
 
+postRouter.use(verifyToken)
+
 // Create posts
-postRouter.post('/', postValidationRules(), validate, verifyToken, createPost);
+postRouter.post('/', postValidationRules(), validate, createPost);
 
 //Get my posts
-postRouter.get('/my_posts', verifyToken, getPosts);
+postRouter.get('/my_posts', getPosts);
 
 // Get All posts
-postRouter.get('/all_posts', verifyToken, getAllPostsUsers);
+postRouter.get('/all_posts', getAllPostsUsers);
 
 //Get single post
-postRouter.delete('/:postId', verifyToken, getPostById);
+postRouter.delete('/:postId', getPostById);
 
 //Delete single post
-postRouter.delete('/:postId', verifyToken, deletePostById);
+postRouter.delete('/:postId', deletePostById);
 
 
 
